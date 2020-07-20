@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FirebaseService } from '../firebase.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,7 +9,10 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private firebaseService:FirebaseService) {
+   
+   }
   
   public loginForm = new FormGroup({
     email: new FormControl('',  Validators.required),
@@ -16,10 +21,12 @@ export class LoginComponent implements OnInit {
   }); 
 
   login(formData: FormData){
-    // this.firebaseService.login(formData["email"], formData["password"]);
+    console.log("login")
+     this.firebaseService.login(formData["email"], formData["password"]);
   }
 
   ngOnInit() {
+        
   }
 
 }

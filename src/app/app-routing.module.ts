@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    component: PagesComponent,
+    component: PagesComponent, 
     children: [
       {
         path: "#",
