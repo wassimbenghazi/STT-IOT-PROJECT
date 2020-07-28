@@ -16,13 +16,18 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { AdminModule } from './admin/admin.module';
+import { AuthGuard } from './auth.guard';
+import { LoginGuard } from './login.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +37,13 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AdminModule,
+    PagesModule,
     RouterModule,
     AppRoutingModule,
     
     NgbModule,
-    PagesModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

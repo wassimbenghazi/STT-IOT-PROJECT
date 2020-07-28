@@ -20,97 +20,97 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/dashboard" routerLinkActive="active">
+      <a class="nav-link" routerLink="/admin/#/dashboard" routerLinkActive="active">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/forms" routerLinkActive="active">
+    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminforms) === -1)">
+      <a class="nav-link" routerLink="/admin/#/forms" routerLinkActive="active">
         <i class="menu-icon mdi mdi-notification-clear-all"></i>
         <span class="menu-title">Form elements</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/buttons" routerLinkActive="active">
+    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminbuttons) === -1)">
+      <a class="nav-link" routerLink="/admin/#/buttons" routerLinkActive="active">
         <i class="menu-icon mdi mdi-dna"></i>
         <span class="menu-title">Buttons</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/progressbar" routerLinkActive="active">
+    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminprogressbar) === -1)">
+      <a class="nav-link" routerLink="/admin/#/progressbar" routerLinkActive="active">
         <i class="menu-icon mdi mdi-trackpad"></i>
         <span class="menu-title">Progress bar</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/carousel" routerLinkActive="active">
+    <li class="nav-item " *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admincarousel) === -1)">
+      <a class="nav-link" routerLink="/admin/#/carousel" routerLinkActive="active">
         <i class="menu-icon mdi mdi-texture"></i>
         <span class="menu-title">Carousal</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/tooltips" routerLinkActive="active">
+    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admintooltips) === -1)">
+      <a class="nav-link" routerLink="/admin/#/tooltips" routerLinkActive="active">
         <i class="menu-icon mdi mdi-content-copy"></i>
         <span class="menu-title">Tooltip</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/tabs" routerLinkActive="active">
+    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admintabs) === -1)">
+      <a class="nav-link" routerLink="/admin/#/tabs" routerLinkActive="active">
         <i class="menu-icon mdi mdi-lightbulb-outline"></i>
         <span class="menu-title">Tabs</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/dropdowns" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admindropdowns) === -1)">
+      <a class="nav-link" routerLink="/admin/#/dropdowns" routerLinkActive="active">
         <i class="menu-icon mdi mdi-backup-restore"></i>
         <span class="menu-title">Dropdown</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/breadcrumbs" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminbreadcrumbs) === -1)">
+      <a class="nav-link" routerLink="/admin/#/breadcrumbs" routerLinkActive="active">
         <i class="menu-icon mdi mdi-flag-outline"></i>
         <span class="menu-title">Breadcrumb</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/pagination" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminpagination) === -1)">
+      <a class="nav-link" routerLink="/admin/#/pagination" routerLinkActive="active">
         <i class="menu-icon mdi mdi-loupe"></i>
         <span class="menu-title">Pagination</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/tables" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admintabels) === -1)">
+      <a class="nav-link" routerLink="/admin/#/tables" routerLinkActive="active">
         <i class="menu-icon mdi mdi-table"></i>
         <span class="menu-title">Tables</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/alerts" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminalerts) === -1)">
+      <a class="nav-link" routerLink="/admin/#/alerts" routerLinkActive="active">
         <i class="menu-icon mdi mdi-shield-outline"></i>
         <span class="menu-title">Alerts</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/accordions" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminaccordions) === -1)">
+      <a class="nav-link" routerLink="/admin/#/accordions" routerLinkActive="active">
         <i class="menu-icon mdi mdi-altimeter"></i>
         <span class="menu-title">Accordion</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/badges" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminbadges) === -1)">
+      <a class="nav-link" routerLink="/admin/#/badges" routerLinkActive="active">
         <i class="menu-icon mdi mdi-checkbox-multiple-blank-circle-outline"></i>
         <span class="menu-title">Badges</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/icons" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminicons) === -1)">
+      <a class="nav-link" routerLink="/admin/#/icons" routerLinkActive="active">
         <i class="menu-icon mdi mdi-chart-bubble"></i>
         <span class="menu-title">Icons</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/typography" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admintypography) === -1)">
+      <a class="nav-link" routerLink="/admin/#/typography" routerLinkActive="active">
         <i class="menu-icon mdi mdi-format-italic"></i>
         <span class="menu-title">Typography</span>
       </a>

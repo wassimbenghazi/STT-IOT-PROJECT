@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/firebase.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  constructor() { }
+  constructor(private firebase:FirebaseService) { }
 
   ngOnInit() {
   }
+  logout(){this.firebase.logOut()}
+
 
 }

@@ -65,7 +65,8 @@ export class FirebaseService {
         role: "user",
         name:name,
         lastname:lastname,
-        secureId:""
+        secureId:"",
+        adminRoles:[]
        }
        
        //add the user to the database
@@ -107,9 +108,9 @@ export class FirebaseService {
             //setUserStatus
             this.setUserStatus(this.currentUser)
             if(userRef.data().role !== "admin") {
-              this.router.navigate(["/#/dashboard"]);
+              this.router.navigate(["/user/#/dashboard"]);
             }else{
-              this.router.navigate(["/#/dashboard"]);
+              this.router.navigate(["/admin/#/dashboard"]);
             }
           })
         })

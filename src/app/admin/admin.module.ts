@@ -20,34 +20,36 @@ import { TooltipsComponent } from './tooltips/tooltips.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { RouterModule, Routes } from '@angular/router';
-import { PagesComponent } from './pages.component';
+import { AdminComponent } from './admin.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from '../auth.guard';
+import { AdminGuard } from '../admin.guard';
+
 const routes: Routes = [
-  
-  { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard],data: {roles: ["user"]} },
-  { path: 'forms', component: FormsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'buttons', component: ButtonsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'tables', component: TablesComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'icons', component: IconsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'typography', component: TypographyComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'alerts', component: AlertsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'accordions', component: AccordionsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'badges', component: BadgesComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'progressbar', component: ProgressbarComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'breadcrumbs', component: BreadcrumbsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'pagination', component: PaginationComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'dropdowns', component: DropdownComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'tooltips', component: TooltipsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'carousel', component: CarouselComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
-  { path: 'tabs', component: TabsComponent ,canActivate:[AuthGuard],data: {roles: ["user"]}},
+  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent ,canActivate:[AuthGuard],data: {roles: ["admin"]}},
+  { path: 'forms', component: FormsComponent ,canActivate:[AdminGuard],data: {roles: "admin-forms"}},
+  { path: 'buttons', component: ButtonsComponent ,canActivate:[AdminGuard],data: {roles: "admin-buttons"}},
+  { path: 'tables', component: TablesComponent ,canActivate:[AdminGuard],data: {roles: ["admin-tabels"]}},
+  { path: 'icons', component: IconsComponent ,canActivate:[AdminGuard],data: {roles: ["admin-icons"]}},
+  { path: 'typography', component: TypographyComponent ,canActivate:[AdminGuard],data: {roles: ["admin-typography"]}},
+  { path: 'alerts', component: AlertsComponent ,canActivate:[AdminGuard],data: {roles: ["admin-alerts"]}},
+  { path: 'accordions', component: AccordionsComponent ,canActivate:[AdminGuard],data: {roles: ["admin-accordions"]}},
+  { path: 'badges', component: BadgesComponent ,canActivate:[AdminGuard],data: {roles: ["admin-badges"]}},
+  { path: 'progressbar', component: ProgressbarComponent ,canActivate:[AdminGuard],data: {roles: ["admin-progressbar"]}},
+  { path: 'breadcrumbs', component: BreadcrumbsComponent ,canActivate:[AdminGuard],data: {roles: ["admin-breadcrumbs"]}},
+  { path: 'pagination', component: PaginationComponent ,canActivate:[AdminGuard],data: {roles: ["admin-pagination"]}},
+  { path: 'dropdowns', component: DropdownComponent ,canActivate:[AdminGuard],data: {roles: ["admin-dropdowns"]}},
+  { path: 'tooltips', component: TooltipsComponent ,canActivate:[AdminGuard],data: {roles: ["admin-tooltips"]}},
+  { path: 'carousel', component: CarouselComponent ,canActivate:[AdminGuard],data: {roles: ["admin-carousel"]}},
+  { path: 'tabs', component: TabsComponent,canActivate:[AdminGuard],data: {roles: ["admin-tabs"]} },
   
 ];
 
 @NgModule({
   declarations: [
-    PagesComponent,
+    AdminComponent,
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
@@ -77,4 +79,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class PagesModule { }
+export class AdminModule { }
