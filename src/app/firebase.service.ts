@@ -172,19 +172,19 @@ export class FirebaseService {
  
   // }
   
-  // updateBalance(user,amount){let key:string="";
-  // this.firestore.collection("users").ref.where("id","==",user.id).get().then(querySnapshot => {
-  //   querySnapshot.forEach(userRef=> { key=userRef.id})
-  //   console.log("key",key)
-  //   this.firestore.collection("users").doc(key).update( {
-  //     "balance": user.balance + amount
-  //   }) 
-  //   this.router.navigate(["/admin/table-list"]);
+  updateAdminRoles(user,rolesList){let key:string="";
+  this.firestore.collection("users").ref.where("id","==",user.id).get().then(querySnapshot => {
+    querySnapshot.forEach(userRef=> { key=userRef.id})
+    console.log("key",key)
+    this.firestore.collection("users").doc(key).update( {
+      "adminRoles": rolesList
+    }) 
+    this.ngZone.run(() => this.router.navigate(["/admin/#/admin-list"]));
    
-  // }) 
+  }) 
   
  
-  // }
+  }
 
   // sendReply(reply,id){
   //   let myReply = {

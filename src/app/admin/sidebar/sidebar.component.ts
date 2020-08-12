@@ -9,12 +9,12 @@ import { FirebaseService } from 'src/app/firebase.service';
 export class SidebarComponent implements OnInit {
   constructor(private firebaseService:FirebaseService) { }
   currentUser = this.firebaseService.currentUser;
-  sideRoles = {adminforms:"admin-forms" ,
+  sideRoles = {clientlist:"client-list" ,
                adminbuttons :"admin-buttons",
                admintables: "admin-tables",
                adminicons:"admin-icons",
                adminprogressbar:"admin-progressbar",
-               admincarousel:"admin-carousel",
+               adminlist:"admin-list",
                admintooltips:"admin-tooltips",
                admindropdowns:"admin-dropdowns",
                admintabs:"admin-tabs",
@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
                adminpagination:"admin-pagination",
                admintabels:"admin-tabels",
                adminalerts:"admin-alerts",
-               adminaccordions:"admin-accordions",
+               admincontacts:"admin-contacts",
                adminbadges:"admin-badges",
                admintypography:"admin-typography"};
   ngOnInit() {

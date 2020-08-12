@@ -7,16 +7,14 @@
             <img src="assets/images/faces/face1.jpg" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name">Richard V.Welsh</p>
+            <p class="profile-name">{{currentUser.name}} {{currentUser.lastname}}</p>
             <div>
-              <small class="designation text-muted">Manager</small>
+              <small class="designation text-muted">{{currentUser.role}}</small>
               <span class="status-indicator online"></span>
             </div>
           </div>
         </div>
-        <button class="btn btn-success btn-block">New Project
-          <i class="mdi mdi-plus"></i>
-        </button>
+        
       </div>
     </li>
     <li class="nav-item">
@@ -25,10 +23,16 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminforms) === -1)">
-      <a class="nav-link" routerLink="/admin/#/forms" routerLinkActive="active">
+    <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.clientlist) === -1)">
+      <a class="nav-link" routerLink="/admin/#/client-list" routerLinkActive="active">
         <i class="menu-icon mdi mdi-notification-clear-all"></i>
-        <span class="menu-title">Form elements</span>
+        <span class="menu-title">List of Clients</span>
+      </a>
+    </li>
+    <li class="nav-item " *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminlist) === -1)">
+      <a class="nav-link" routerLink="/admin/#/admin-list" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-texture"></i>
+        <span class="menu-title">List of Admins</span>
       </a>
     </li>
     <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminbuttons) === -1)">
@@ -43,12 +47,7 @@
         <span class="menu-title">Progress bar</span>
       </a>
     </li>
-    <li class="nav-item " *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admincarousel) === -1)">
-      <a class="nav-link" routerLink="/admin/#/carousel" routerLinkActive="active">
-        <i class="menu-icon mdi mdi-texture"></i>
-        <span class="menu-title">Carousal</span>
-      </a>
-    </li>
+    
     <li class="nav-item" *ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admintooltips) === -1)">
       <a class="nav-link" routerLink="/admin/#/tooltips" routerLinkActive="active">
         <i class="menu-icon mdi mdi-content-copy"></i>
@@ -86,13 +85,13 @@
       </a>
     </li>
     <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminalerts) === -1)">
-      <a class="nav-link" routerLink="/admin/#/alerts" routerLinkActive="active">
+      <a class="nav-link" routerLink="/admin/#/admin-alerts" routerLinkActive="active">
         <i class="menu-icon mdi mdi-shield-outline"></i>
         <span class="menu-title">Alerts</span>
       </a>
     </li>
-    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.adminaccordions) === -1)">
-      <a class="nav-link" routerLink="/admin/#/accordions" routerLinkActive="active">
+    <li class="nav-item"*ngIf="!(currentUser.adminRoles.indexOf(sideRoles.admincontacts) === -1)">
+      <a class="nav-link" routerLink="/admin/#/admin-contacts" routerLinkActive="active">
         <i class="menu-icon mdi mdi-altimeter"></i>
         <span class="menu-title">Accordion</span>
       </a>

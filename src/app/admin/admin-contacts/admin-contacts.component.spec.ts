@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccordionsComponent } from './accordions.component';
+import { AdminContactsComponent } from './admin-contacts.component';
 
 describe('AccordionsComponent', () => {
-  let component: AccordionsComponent;
-  let fixture: ComponentFixture<AccordionsComponent>;
+  let component: AdminContactsComponent;
+  let fixture: ComponentFixture<AdminContactsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccordionsComponent ]
+      declarations: [ AdminContactsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccordionsComponent);
+    fixture = TestBed.createComponent(AdminContactsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertsComponent } from './alerts.component';
+import { AdminListComponent } from './admin-list.component';
 
-describe('AlertsComponent', () => {
-  let component: AlertsComponent;
-  let fixture: ComponentFixture<AlertsComponent>;
+describe('CarouselComponent', () => {
+  let component: AdminListComponent;
+  let fixture: ComponentFixture<AdminListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertsComponent ]
+      declarations: [ AdminListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlertsComponent);
+    fixture = TestBed.createComponent(AdminListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
