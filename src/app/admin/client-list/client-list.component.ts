@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FirebaseService } from 'src/app/firebase.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 declare var $: any;
 
 export interface Client {
@@ -11,6 +13,26 @@ export interface Client {
   email: string;
   secureId: string;
  
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog.html',
+})
+export class DialogOverviewExampleDialog {
+  newSecureId:string =""  
+  
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+export interface DialogData {
+  email: string;
+  newSecureId: string;
 }
 
 
@@ -40,7 +62,7 @@ export class ClientListComponent implements OnInit {
   displayedColumns: string[] = ['Name','Lastname', 'Email', 'secureId','action'];
   dataSource =new MatTableDataSource<Client>(this.data);
 
-  constructor(private firestore: AngularFirestore, private firebaseService:FirebaseService) { }
+  constructor(private firestore: AngularFirestore, private firebaseService:FirebaseService,public dialog: MatDialog) { }
   currentUser = this.firebaseService.currentUser;
   loadData(){
     this.data=[]
@@ -65,6 +87,32 @@ export class ClientListComponent implements OnInit {
      
     
    }) }
+   checkallDvices(element:any){
+     this.firebaseService.getAllDevices(element.secureId)
+    }
+
+   addSecureId(element:any){
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {email: element.email, secureId: element.secureId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+     
+      
+     
+        this.firebaseService.addNewSecureIdClient( result , element.email,element.secureId)
+      
+      
+
+
+    });
+
+   }
+  
+
+
+
   ngOnInit() { this.loadData()}
 
   showNotification(from, align,message){
@@ -96,3 +144,13 @@ export class ClientListComponent implements OnInit {
     });
   }
 }
+
+
+
+
+
+
+
+
+
+

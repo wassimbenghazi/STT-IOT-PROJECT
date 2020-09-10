@@ -1,0 +1,14 @@
+
+
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Email :  {{data.email}}  Liste secureId : {{data.secureId}}</h5>
+      
+      <div class="form-group">
+        <label for="sid">Ajouter un nouveau secureId :</label>
+      <input matInput class="form-control"  id="sid" [(ngModel)]="newSecureId">
+    </div>
+      <button mat-button class="btn btn-danger" (click)="onNoClick()">Annuler</button>
+  <button mat-button  class="btn btn-primary" [mat-dialog-close]="newSecureId" cdkFocusInitial>Ajouter</button>
+    </div>
+  </div>

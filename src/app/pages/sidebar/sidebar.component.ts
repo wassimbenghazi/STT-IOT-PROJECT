@@ -7,11 +7,12 @@ import { FirebaseService } from 'src/app/firebase.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  constructor(private firebase:FirebaseService) { }
+  constructor(private firebaseService:FirebaseService) { }
+  currentUser = this.firebaseService.currentUser;
 
   ngOnInit() {
   }
-  logout(){this.firebase.logOut()}
+  logout(){this.firebaseService.logOut()}
 
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { FirebaseService } from 'src/app/firebase.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,12 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbDropdownConfig]
 })
 export class NavbarComponent implements OnInit {
+  constructor(config: NgbDropdownConfig, private firebaseService:FirebaseService) {
+    config.placement = 'bottom-right';
+  }
   public sidebarOpened = false;
+  
+  currentUser = this.firebaseService.currentUser;
   toggleOffcanvas() {
     this.sidebarOpened = !this.sidebarOpened;
     if (this.sidebarOpened) {
@@ -18,9 +24,7 @@ export class NavbarComponent implements OnInit {
       document.querySelector('.sidebar-offcanvas').classList.remove('active');
     }
   }
-  constructor(config: NgbDropdownConfig) {
-    config.placement = 'bottom-right';
-  }
+  
   ngOnInit() {
   }
 

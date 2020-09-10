@@ -2,7 +2,8 @@ import { Injectable ,NgZone} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {Router} from "@angular/router";
 import { AngularFirestore , AngularFirestoreDocument, AngularFirestoreCollection} from '@angular/fire/firestore';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Timestamp } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,37 +22,28 @@ export class FirebaseService {
     this.userStatusChanges.next(userStatus);
   }
 
-  // carRequest(type_Car:string,nb_L:string){
-  //   let LicensePlate = {
-  //     id: this.currentUser.id,
-  //     type_Car:type_Car,
-  //     nb_L:nb_L,
-  //     verfied:"false"
-  //    }
-  //   this.firestore.collection("LicensePlates").add(LicensePlate)
-       
-  // }
-  // sendContact(contact:string){
-  //   let myContact = {
-  //     id: this.currentUser.id,
-  //     message:contact,
-  //     seen:"Not yet"
-  //    }
-  //    let keys=[]
-  //   this.firestore.collection("Messages").add(myContact).then(querySnapshot =>{
-  //   this.firestore.collection("AdminReply").ref.where("id","==",this.currentUser.id).get().then(querySnapshot => {
-  //     querySnapshot.forEach(userRef=> { 
-  //      keys.push( userRef.id as string  )
+  
+  sendContact(contact:string){
+    let myContact = {
+      id: this.currentUser.id,
+      message:contact,
+      seen:"Not yet"
+     }
+     let keys=[]
+    this.firestore.collection("Messages").add(myContact).then(querySnapshot =>{
+    this.firestore.collection("AdminReply").ref.where("id","==",this.currentUser.id).get().then(querySnapshot => {
+      querySnapshot.forEach(userRef=> { 
+       keys.push( userRef.id as string  )
       
-  //       })
-  //       for (var val of keys) {
-  //         this.firestore.collection("AdminReply").doc(val).delete()
-  //       }
+        })
+        for (var val of keys) {
+          this.firestore.collection("AdminReply").doc(val).delete()
+        }
         
      
-  //   }) })
+    }) })
        
-  // }
+  }
 
   signUp(email:string, password:string, name:string, lastname:string){
   
@@ -65,7 +57,7 @@ export class FirebaseService {
         role: "user",
         name:name,
         lastname:lastname,
-        secureId:"",
+        secureId:[],
         adminRoles:[]
        }
        
@@ -159,20 +151,82 @@ export class FirebaseService {
       }
     })
   }
-  // updateLicensePlate(nb_L){let key:string="";
-  //   this.firestore.collection("LicensePlates").ref.where("nb_L","==",nb_L)
-  //   .get().then(querySnapshot=>{
-  //     querySnapshot.forEach(userRef=> { key=userRef.id})
-  //     console.log("key",key)
-  //     this.firestore.collection("LicensePlates").doc(key).update( {
-  //       "verfied":"true"
-  //     }) 
-  //   }) 
+  
+  getAllDevices(secureIdList:Array<string>){
+    secureIdList.forEach(sid => {
+      let listDevices=[]
+      let device:any
+      let carte = {secureId :"" , devices:[]}
     
- 
-  // }
+         this.firestore.collection("temperature").ref.where("secureId","==",sid).get().then(data => {data.forEach(temp => {
+         device = temp.data()
+         if(listDevices.indexOf(device.deviceName) === -1){listDevices.push(device.deviceName)}
+         })
+         carte = {secureId : sid , devices:listDevices}
+         this.firestore.collection("carte").add(carte)
+         })
+      
+    });
+  }
+  addNewSecureIdClient(newSecureId:string,email:string, secureIdList:Array<string>){
+    let key:string
+    this.firestore.collection("users").ref.where("email","==",email).get().then(data =>{
+      data.forEach(element=>{ key= element.id})
+      secureIdList.push(newSecureId)
+      this.firestore.collection("users").doc(key).update( {
+        "secureId": secureIdList
+      }) 
+
+    })
+  }
+  getAllTempObjects(){
+    let carte:any
+    let key:any
+    let listOfTemp=[]
+    let listDeviceTemp=[]
+    let temperaturePoint=[]
+    let device ={name:"" , data:[]}
+    
+    this.currentUser.secureId.forEach(sid => {
+      
+      this.firestore.collection("carte").ref.where("secureId","==",sid).get().then(
+        data => { data.forEach( c => {
+          carte = c.data()
+          carte.devices.forEach(element => {
+            
+            
+            this.firestore.collection("temperature").ref.where("secureId","==",sid).get()
+            .then(data1 => {
+              listDeviceTemp=[]
+              data1.forEach( element1 =>{ 
+                
+              if(element1.data().deviceName === element){
+                let date = new Date(element1.data().time)
+                date.setHours( date.getHours() + 1 )
+              temperaturePoint = [Date.parse(date.toString()) , element1.data().temperature]
+              listDeviceTemp.push(temperaturePoint)
+              
+            }
+
+
+            })
+            console.log("Device Name" , element ,  listDeviceTemp)
+            device ={name: "Secure Id : " + sid +" / Device Name : " + element , data : listDeviceTemp}
+            listOfTemp.push(device)
+          })
+            
+          });
+
+        })}
+      )
+      
+    });     
+    
+    return listOfTemp
+  }
   
   updateAdminRoles(user,rolesList){let key:string="";
+  
   this.firestore.collection("users").ref.where("id","==",user.id).get().then(querySnapshot => {
     querySnapshot.forEach(userRef=> { key=userRef.id})
     console.log("key",key)
@@ -186,30 +240,30 @@ export class FirebaseService {
  
   }
 
-  // sendReply(reply,id){
-  //   let myReply = {
-  //     id: id,
-  //     reply:reply,
-  //    }
+  sendReply(reply,id){
+    let myReply = {
+      id: id,
+      reply:reply,
+     }
      
-  //    let keys=[]
+     let keys=[]
 
-  //    this.firestore.collection("AdminReply").add(myReply).then(querySnapshot1 => {
-  //     this.firestore.collection("Messages").ref.where("id","==",id).get().then(querySnapshot => {
-  //       querySnapshot.forEach(userRef=> { 
-  //        keys.push( userRef.id as string  )
+     this.firestore.collection("AdminReply").add(myReply).then(querySnapshot1 => {
+      this.firestore.collection("Messages").ref.where("id","==",id).get().then(querySnapshot => {
+        querySnapshot.forEach(userRef=> { 
+         keys.push( userRef.id as string  )
         
-  //         })
-  //         for (var val of keys) {
-  //           this.firestore.collection("Messages").doc(val).delete()
-  //         }
+          })
+          for (var val of keys) {
+            this.firestore.collection("Messages").doc(val).delete()
+          }
           
        
-  //     }) 
+      }) 
           
-  //   })
+    })
     
-  // }
+  }
 
 
 

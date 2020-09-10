@@ -7,16 +7,14 @@
             <img src="assets/images/faces/face1.jpg" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name">Richard V.Welsh</p>
+            <p class="profile-name">{{currentUser.name}} {{currentUser.lastname}}</p>
             <div>
-              <small class="designation text-muted">Manager</small>
+              <small class="designation text-muted">{{currentUser.role}}</small>
               <span class="status-indicator online"></span>
             </div>
           </div>
         </div>
-        <button class="btn btn-success btn-block">New Project
-          <i class="mdi mdi-plus"></i>
-        </button>
+        
       </div>
     </li>
     <li class="nav-item">
@@ -25,7 +23,7 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" routerLink="/user/#/forms" routerLinkActive="active">
         <i class="menu-icon mdi mdi-notification-clear-all"></i>
         <span class="menu-title">Form elements</span>
@@ -36,14 +34,21 @@
         <i class="menu-icon mdi mdi-dna"></i>
         <span class="menu-title">Buttons</span>
       </a>
-    </li>
+    </li> -->
     <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/progressbar" routerLinkActive="active">
-        <i class="menu-icon mdi mdi-trackpad"></i>
-        <span class="menu-title">Progress bar</span>
+      <a class="nav-link" routerLink="/user/#/temperature" routerLinkActive="active">
+        <!-- <i class="menu-icon mdi mdi-trackpad"></i> -->
+        <i class=" menu-icon fa fa-thermometer-4"></i>
+        <span class="menu-title">Temperature</span>
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" routerLink="/user/#/contact" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-lightbulb-outline"></i>
+        <span class="menu-title">Contact</span>
+      </a>
+    </li>
+    <!-- <li class="nav-item">
       <a class="nav-link" routerLink="/user/#/carousel" routerLinkActive="active">
         <i class="menu-icon mdi mdi-texture"></i>
         <span class="menu-title">Carousal</span>
@@ -55,12 +60,7 @@
         <span class="menu-title">Tooltip</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/tabs" routerLinkActive="active">
-        <i class="menu-icon mdi mdi-lightbulb-outline"></i>
-        <span class="menu-title">Tabs</span>
-      </a>
-    </li>
+    
     <li class="nav-item">
       <a class="nav-link" routerLink="/user/#/dropdowns" routerLinkActive="active">
         <i class="menu-icon mdi mdi-backup-restore"></i>
@@ -103,16 +103,17 @@
         <span class="menu-title">Badges</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user/#/icons" routerLinkActive="active">
-        <i class="menu-icon mdi mdi-chart-bubble"></i>
-        <span class="menu-title">Icons</span>
-      </a>
-    </li>
+    
     <li class="nav-item">
       <a class="nav-link" routerLink="/user/#/typography" routerLinkActive="active">
         <i class="menu-icon mdi mdi-format-italic"></i>
         <span class="menu-title">Typography</span>
+      </a>
+    </li> -->
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/user/#/icons" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-chart-bubble"></i>
+        <span class="menu-title">Icons</span>
       </a>
     </li>
     <li class="nav-item">

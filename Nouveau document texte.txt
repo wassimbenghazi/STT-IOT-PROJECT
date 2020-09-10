@@ -1,0 +1,21 @@
+carte => secureId
+	=>deviceName
+		=> tem 
+		=> hum
+
+for i in secureIdList 
+	for j in deviceNameList
+		for k in temList
+			tempdevicelist.push(k)
+
+for i in currentUser.secureId{
+		get.collection(température).ref.where("secureId","==",i).get().then((data)
+
+
+
+
+alltem=> allDevices=> uniqueSecureID in uniquePeriode ==> alltempObjects ==> listofdevices 
+listofdevices=[]
+for i in alltempobjects :
+	if !(i.deviceName in listofdevices):
+		listofdevices.push(i.deviceName)

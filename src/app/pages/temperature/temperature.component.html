@@ -1,0 +1,13 @@
+
+<button *ngIf="!boolcharts" type="button" class="btn btn-primary btn-fw" (click)="afficherchart()" >afficher</button>
+<div *ngIf="boolcharts">
+  <div class="grid-margin stretch-card" *ngFor="let chart of chartList">
+    <div class="card">
+      <div class="card-body">
+        <div [chart]="chart" ></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  

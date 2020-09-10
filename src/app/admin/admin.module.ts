@@ -24,9 +24,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatTableModule} from '@angular/material/table';
 import { AuthGuard } from '../auth.guard';
 import { AdminGuard } from '../admin.guard';
-import { ClientListComponent } from './client-list/client-list.component';
+import { ClientListComponent, DialogOverviewExampleDialog } from './client-list/client-list.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 
 const routes: Routes = [
@@ -73,17 +78,25 @@ const routes: Routes = [
     TooltipsComponent,
     AdminListComponent,
     TabsComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     CommonModule,
-    FormsModule,ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatSlideToggleModule,
     NgbModule,
+    MatTooltipModule,
     
     RouterModule.forChild(routes),
     
   ],
+  entryComponents: [
+    DialogOverviewExampleDialog
+ ],
   exports: [RouterModule]
 })
 export class AdminModule { }
